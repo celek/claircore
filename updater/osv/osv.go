@@ -522,6 +522,7 @@ func (e *ecs) Insert(ctx context.Context, skipped *stats, name string, a *adviso
 		b.WriteString(ref.URL)
 	}
 	proto.Links = b.String()
+	proto.Aliases = strings.Join(a.Aliases, " ")
 	for i := range a.Affected {
 		af := &a.Affected[i]
 		v := e.NewVulnerability()

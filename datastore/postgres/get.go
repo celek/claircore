@@ -116,6 +116,7 @@ func (s *MatcherStore) Get(ctx context.Context, records []*claircore.IndexRecord
 				&v.Repo.URI,
 				&v.FixedInVersion,
 				&v.Updater,
+				&v.Aliases,
 			)
 			v.ID = strconv.FormatInt(id, 10)
 			if err != nil {
