@@ -512,6 +512,9 @@ func (e *ecs) Insert(ctx context.Context, skipped *stats, name string, a *adviso
 				Msg("odd cvss mangling result")
 		}
 	}
+	if len(a.Severity) == 0 {
+		proto.NormalizedSeverity = extractSeverityFromDatabase(proto.NormalizedSeverity, *a)
+	}
 	for i, ref := range a.References {
 		if i != 0 {
 			b.WriteByte(' ')
@@ -519,6 +522,7 @@ func (e *ecs) Insert(ctx context.Context, skipped *stats, name string, a *adviso
 		b.WriteString(ref.URL)
 	}
 	proto.Links = b.String()
+	proto.Aliases = strings.Join(a.Aliases, " ")
 	for i := range a.Affected {
 		af := &a.Affected[i]
 		v := e.NewVulnerability()
