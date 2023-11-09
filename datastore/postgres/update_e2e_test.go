@@ -404,7 +404,8 @@ func checkInsertedVulns(ctx context.Context, t *testing.T, pool *pgxpool.Pool, i
 	vuln.repo_name,
 	vuln.repo_key,
 	vuln.repo_uri,
-	vuln.fixed_in_version
+	vuln.fixed_in_version,
+	vuln.aliases
 FROM uo_vuln
 JOIN vuln ON vuln.id = uo_vuln.vuln
 JOIN update_operation uo ON uo.id = uo_vuln.uo
