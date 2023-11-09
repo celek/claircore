@@ -122,6 +122,7 @@ func buildGetQuery(record *claircore.IndexRecord, opts *datastore.GetOpts) (stri
 		"repo_uri",
 		"fixed_in_version",
 		"vuln.updater",
+		"vuln.aliases",
 	).From("vuln").
 		Join(goqu.I("uo_vuln"), goqu.On(goqu.Ex{"vuln.id": goqu.I("uo_vuln.vuln")})).
 		Join(goqu.I("latest_update_operations"), goqu.On(goqu.Ex{"latest_update_operations.id": goqu.I("uo_vuln.uo")})).

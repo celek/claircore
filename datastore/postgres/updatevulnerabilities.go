@@ -219,7 +219,7 @@ func md5Vuln(v *claircore.Vulnerability) (string, []byte) {
 		b.WriteString(l)
 		b.WriteString(u)
 	}
-	if v.Aliases != nil {
+	if v.Aliases != "" {
 		b.WriteString(v.Aliases)
 	}
 	s := md5.Sum(b.Bytes())

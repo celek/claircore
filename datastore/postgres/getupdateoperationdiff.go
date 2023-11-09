@@ -94,7 +94,8 @@ WHERE ROW ('vulnerability') = ALL (SELECT kind FROM update_operation WHERE ref =
 		repo_name,
 		repo_key,
 		repo_uri,
-		fixed_in_version
+		fixed_in_version,
+		aliases
 	FROM vuln
 	WHERE
 		vuln.id IN (
