@@ -559,6 +559,7 @@ func (e *ecs) Insert(ctx context.Context, skipped *stats, name string, a *adviso
 						ver, err = semver.NewVersion(ev.Fixed)
 						if err == nil {
 							v.Range.Upper = FromSemver(ver)
+							v.FixedInVersion = ev.Fixed
 						}
 					case ev.LastAffected != "" && len(af.Versions) != 0: // less than equal to
 						// TODO(hank) Should be able to convert this to a "less than."
